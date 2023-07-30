@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="{% static 'register_image.jpg' %}" alt="Register Image">
+        </div>
+        <div class="form-container">
+            <h1 class="welcome-msg">Welcome to TaskMaster!</h1>
+            <p class="welcome">Your todo website for efficient task management and productivity.</p>
+            <h1 class="title">Registration</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username"><br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email"><br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"><br>
+
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+            <p class="msg">Have an account? <a href="{% url 'login-page' %}">Login</a></p>
+        </div>
+    </div>
+</body>
+</html>
