@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todo.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">My ToDo List</h1>
+
+        <form action="/addItem/" method="post">
+            {% csrf_token %}
+            <input type="text" name="content">
+            <input type="submit" value="Add">
+        </form>
+
+        <ul>
+            {% for i in all_items %}
+            <li class="task-item">
+                <span>{{ i.content }}</span>
+                <form action="/deleteItem/{{ i.id }}/" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
