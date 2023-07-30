@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="{% static 'login_image.jpg' %}" alt="Login Image">
+        </div>
+        <div class="form-container">
+            <h1 class="welcome-msg">Welcome Back!</h1>
+            <h1 class="title">Login</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username"><br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"><br>
+
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <p class="msg">Do not have an account? <a href="{% url 'register-page' %}">Register</a></p>
+        </div>
+    </div>
+</body>
+</html>
