@@ -8,7 +8,11 @@ from django.http import HttpResponseRedirect
 
 @login_required
 def HomePage(request):
-    return render(request, 'todolist.html', {})
+    user_tasks = ToDoItem.objects.filter(user=request.user)
+    if user_tasks.exists():
+        return render(request, 'todolist.html', {'all_items': user_tasks})
+    else:
+        return render(request, 'todolist.html', {})
 
 def Register(request):
     if(request.method == 'POST'):
@@ -40,18 +44,21 @@ def logout_view(request):
     logout(request)
     return redirect('login-page')
 
-def toDoAppView(request):
-    all_todo_items = ToDoItem.objects.all()
+@login_required
+def to_do_app_view(request):
+    all_todo_items = ToDoItem.objects.filter(user=request.user)
     return render(request, 'todolist.html',
     {'all_items':all_todo_items}) 
 
-def addToDoView(request):
+@login_required
+def add_to_do_view(request):
     x = request.POST['content']
-    new_item = ToDoItem(content = x)
+    new_item = ToDoItem(user=request.user, content = x)
     new_item.save()
     return HttpResponseRedirect('/list/') 
 
-def deleteItemView(request, i):
-    deleted_item = ToDoItem.objects.get(id = i)
+@login_required
+def delete_item_view(request, i):
+    deleted_item = ToDoItem.objects.get(id = i, user = request.user)
     deleted_item.delete()
     return HttpResponseRedirect('/list/')     

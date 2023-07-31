@@ -17,17 +17,21 @@
             <input type="submit" value="Add">
         </form>
 
-        <ul>
-            {% for i in all_items %}
-            <li class="task-item">
-                <span>{{ i.content }}</span>
-                <form action="/deleteItem/{{ i.id }}/" method="post">
-                    {% csrf_token %}
-                    <input type="submit" value="Delete">
-                </form>
-            </li>
-            {% endfor %}
-        </ul>
+        {% if user.is_authenticated %}
+            <ul>
+                {% for i in all_items %}
+                    <li class="task-item">
+                        <span>{{ i.content }}</span>
+                        <form action="/deleteItem/{{ i.id }}/" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete">
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You need to log in to view your tasks.</p>
+        {% endif %}
         <button class="btn_logout"><a href="{% url 'login-page' %}">logout</a></button>
     </div>
 </body>
