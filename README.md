@@ -18,6 +18,12 @@ HTML
 CSS
 SQLite (database)
 
+## Screenshots
+![Login Page](screenshots/login.png)
+![Register Page](screenshots/register.png)
+![Home Page](screenshots/home.png)
+![Tasks](screenshots/tasks.png)
+
 ## License
 
     The MIT License (MIT)
