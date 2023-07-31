@@ -17,3 +17,8 @@ Python
 HTML
 CSS
 SQLite (database)
+
+## License
+
+    The MIT License (MIT)
+    Copyright (c) 2023 Kamila Rybakova
