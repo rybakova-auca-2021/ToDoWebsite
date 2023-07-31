@@ -19,10 +19,10 @@ CSS
 SQLite (database)
 
 ## Screenshots
-![Login Page](screenshots/login.png)
-![Register Page](screenshots/register.png)
-![Home Page](screenshots/home.png)
-![Tasks](screenshots/tasks.png)
+![Login Page](ToDoProject/screenshots/login.png)
+![Register Page](ToDoProject/screenshots/register.png)
+![Home Page](ToDoProject/screenshots/home.png)
+![Tasks](ToDoProject/screenshots/tasks.png)
 
 ## License
 
